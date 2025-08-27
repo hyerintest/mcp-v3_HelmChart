@@ -10,7 +10,7 @@ service:
   type:
   - ClusterIP
   - NodePort
-namespace: -@namespace@-
+namespace: mcp-v3-dev
 pvc:
   name: pvc-backend-service-2-3shjld0ka3
   storageClass: tlc-block-sc
@@ -20,15 +20,15 @@ deployment:
   app:
     name: backend-service-2-3shjld0ka3
     type: springboot
-  replicas: -@replicas@-
+  replicas: 1
   update:
     type: RollingUpdate
   repo:
-    url: -@imageRepoName@-
+    url: turaco-dev-registry.turacocloud.com/dev-turaco-workspace-1/turaco
   image:
     name: backend-service-2-3shjld0ka3
     tag: latest
-    secret: -@repoSecret@-
+    secret: regsecret
   container:
     name: backend-service-2-3shjld0ka3
     port: 8080
@@ -36,11 +36,11 @@ deployment:
     name: pvc-backend-service-2-3shjld0ka3
   resource:
     request:
-      memory: -@requestMemory@-
-      cpu: -@requestCpu@-
+      memory: 250Mi
+      cpu: 0.25
     limits:
-      memory: -@limitsMemory@-
-      cpu: -@limitsCpu@-
+      memory: 0Mi
+      cpu: 0
   backing: 
     mysql:
       name: secret-mysql-service-2-ytywnnv8zv
@@ -50,7 +50,7 @@ deployment:
     name: []
   hpa:
     name: hpa-backend-service-2-3shjld0ka3
-    minReplicas: -@minReplicas@-
-    maxReplicas: -@maxReplicas@-
-    cpu: -@cpuAutoScale@-
+    minReplicas: 1
+    maxReplicas: 1
+    cpu: 70
     memory: -@memAutoScale@-
