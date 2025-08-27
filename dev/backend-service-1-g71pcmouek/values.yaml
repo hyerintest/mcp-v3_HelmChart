@@ -27,7 +27,7 @@ deployment:
     url: turaco-dev-registry.turacocloud.com/dev-turaco-workspace-1/turaco
   image:
     name: backend-service-1-g71pcmouek
-    tag: latest
+    tag: "83-97-backend-service-1-g71pcmouek-b62e81d"
     secret: regsecret
   container:
     name: backend-service-1-g71pcmouek
